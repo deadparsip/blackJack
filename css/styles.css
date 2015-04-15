@@ -1,0 +1,77 @@
+body {
+    background:#40a040;
+    font-family:arial;
+}
+.dealer, .player, .cards, .vals {
+    width:600px;
+    height:200px;
+}
+.player, .score {
+    clear:both;
+    float:none;
+}
+.cards {
+    width:80px;
+    float:left;
+    margin:10px 0 5px 10px;
+    height:90px;
+    background:#fff;
+    padding-top:20px;
+    text-align:center;
+    position:relative;
+    -webkit-animation-duration: .6s;
+    box-shadow:2px 2px 5px #4c4c4c;
+	list-style-type:none
+}
+.cardsHolder {
+    width:500px;
+    height:130px;
+	padding-left:0;
+	margin-left:0;
+}
+.score, .result, .aces p {
+    clear:both;
+    margin:10px 0 0 10px;
+    color:#fff;
+    font-weight:bold;
+    display:inline-block;
+}
+.aces p {
+    display:block
+}
+.result {
+    font-size:18px;
+    margin-bottom:20px;
+}
+.cards.hole {
+    background:#eee
+}
+button {
+    background:#eee;
+    width:100px;
+    display:inline-block;
+    height:40px;
+    text-align:center;
+    line-height:2.3em;
+    margin:10px;
+}
+.container {
+    width:600px;
+}
+@-webkit-keyframes rotateInDownLeft {
+    0% {
+        -webkit-transform-origin: left bottom;
+        -webkit-transform: rotate(-90deg);
+        top:-400px;
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform-origin: left bottom;
+        -webkit-transform: rotate(0);
+        top:0px;
+        opacity: 1;
+    }
+}
+.rotateInDownLeft {
+    -webkit-animation-name: rotateInDownLeft;
+}

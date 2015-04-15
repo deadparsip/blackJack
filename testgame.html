@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<title>SUPERCOOL BLACKJACK</title>
+<head>
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+</head>
+<body>
+<p class="result" data-bind="text:result"></p>
+<div class="container">
+    <div class="dealer">
+        <ul class="cardsHolder" data-bind="foreach: dealerHand">
+            <li class="cards" data-bind="text:cardName"></li>
+        </ul>
+        <div class="score">Score: <span data-bind="text:dealerScore"></span>
+
+        </div>
+    </div>
+    <div class="player">
+        <ul class="cardsHolder" data-bind="foreach: playerHand">
+            <li class="cards rotateInDownLeft" data-bind="text:cardName"></li>
+        </ul>
+        <div class="score">Score: <span data-bind="text:playerScore"></span>
+
+        </div>
+    </div>
+    <div class="aces" data-bind="visible:chooseAce()">
+        <p>ACE: Chose your destinies</p>
+        <button class="hit" data-bind="click: chooseAce1">1</button>
+        <button class="hit" data-bind="click: chooseAce11">11</button>
+    </div>
+    <button class="hit" data-bind="click: hit,  enable: enableButtons()">Hit</button>
+    <button class="stick" data-bind="click: stick, enable: enableButtons()">Stick</button>
+    <button class="reset" data-bind="click: start, enable: playerScore() > 0">Start Again</button>
+</div>
+
+
+<script src="js/knockout.js"></script>
+<script src="js/blackjack.js"></script>
+
+</body>
+</html>
+
+			
