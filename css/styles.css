@@ -26,8 +26,8 @@ body {
 .cardsHolder {
     width:500px;
     height:130px;
-	padding-left:0;
-	margin-left:0;
+    padding-left:0;
+    margin-left:0;
 }
 .score, .result, .aces p {
     clear:both;
@@ -35,6 +35,9 @@ body {
     color:#fff;
     font-weight:bold;
     display:inline-block;
+}
+.result {
+   color:#000;
 }
 .aces p {
     display:block
