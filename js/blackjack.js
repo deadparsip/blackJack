@@ -1,4 +1,4 @@
-var blackJack = function () {
+(function () {
     var self = this;
 
     //Game state
@@ -15,7 +15,7 @@ var blackJack = function () {
 		draw : 'DRAW! Dealer unhappily refunds your bet',
 		lose : 'YOU LOSE! HAHAH. NEVER MIND. TRY AGAIN.',
 		start : 'GO GO GO GO GO LET US PLAY'
-	}
+	};
     
     self.playerScore = ko.computed(function () {
         var total = 0;
@@ -129,7 +129,7 @@ var blackJack = function () {
 
     //start game    
     self.start();
+	
+	ko.applyBindings(self);
+})();
 
-};
-
-ko.applyBindings(new blackJack());
