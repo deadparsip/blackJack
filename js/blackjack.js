@@ -1,8 +1,9 @@
 var blackJack = function () {
     var self = this;
 
-    //Game data
-    self.enableButtons = ko.observable(true);
+    //Game state
+    self.pack = ['hearts', 'spades', 'diamonds', 'clubs'];
+	self.enableButtons = ko.observable(true);
     self.chooseAce = ko.observable(false);
     self.acesValue = ko.observable(0);
     self.deck = ko.observableArray([]);
@@ -27,7 +28,7 @@ var blackJack = function () {
     });    
 
     self.makeDeck = function () {
-        ['hearts', 'spades', 'diamonds', 'clubs'].forEach(function (currentValue, index) {
+        self.pack.forEach(function (currentValue, index) {
             for (var j = 1; j < 14; j++) {
                 var cardName = j === 1 ? "Ace" : j === 11 ? "Jack" : j === 12 ? "Queen" : j === 13 ? "king" : j;
                 self.deck.push({
@@ -38,6 +39,8 @@ var blackJack = function () {
         });
     };
 
+	
+	
 
 
     //Game functions     
@@ -50,13 +53,13 @@ var blackJack = function () {
 				self.enableButtons(false);            
 				self.chooseAce(true);        
 			}
-			else { //if dealer gets an ace = chose depending on current score
+			else { //if dealer gets an ace = chose val depending on current score
 				if (self.dealerScore() < 10) {
 					self.deck()[r].value = 11;
 				}
 			}			
         } 		
-        who.push(self.deck()[r]);
+        who.push(self.deck()[r]); //add card to deck
         self.deck().splice(r, 1);
         return self.deal;
     };
