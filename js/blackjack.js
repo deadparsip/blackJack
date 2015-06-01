@@ -9,7 +9,13 @@ var blackJack = function () {
     self.deck = ko.observableArray([]);
     self.dealerHand = ko.observableArray([]);
     self.playerHand = ko.observableArray([]);
-    self.result = ko.observable('GO GO GO GO');
+    self.result = ko.observable();
+	self.wordsies = {
+		win : 'YOU WIN BOOM BOOM BOOM CELEBRATIONS ON YOUR FACE',
+		draw : 'DRAW! Dealer unhappily refunds your bet',
+		lose : 'YOU LOSE! HAHAH. NEVER MIND. TRY AGAIN.',
+		start : 'GO GO GO GO GO LET US PLAY'
+	}
     
     self.playerScore = ko.computed(function () {
         var total = 0;
@@ -85,26 +91,26 @@ var blackJack = function () {
         self.playerHand.removeAll();
         self.deal(self.dealerHand);        
         self.deal(self.playerHand)(self.playerHand);
-        self.result("GO GO GO GO");
+        self.result(self.wordsies.start);
     };
 
     self.checkScore = function (who) {
         if (who === "dealer") {
             if (self.dealerScore() > 21) {
-                self.result("Dealer Bust!");
+                self.result(self.wordsies.win);
             } else if (self.dealerScore() < self.playerScore()) {
                 setTimeout(function () {
                     self.stick();
                 }, 1000);
             } else if (self.dealerScore() > self.playerScore()) {
-                self.result("Dealer Wins");
+                self.result(self.wordsies.lose);
             } else if (self.dealerScore() === self.playerScore()) {
-                self.result("DRAW! I'm still keeping the monies");
+                self.result(self.wordsies.draw);
             }
         } else {
             if (self.playerScore() > 21) {
                 self.enableButtons(false);
-                self.result("Player Bust");
+                self.result(self.wordsies.lose);
             } else {
                 self.enableButtons(true);
             }
